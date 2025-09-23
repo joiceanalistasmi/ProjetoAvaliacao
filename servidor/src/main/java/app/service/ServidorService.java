@@ -23,7 +23,10 @@ public class ServidorService {
     // Busca um servidor por ID
     public Servidor findById(long id) {
         Optional<Servidor> servidor = this.servidorRepository.findById(id);
-        return servidor.orElse(null);
+        if (servidor.isPresent())
+        	return servidor.get();
+        else
+        	return null;
     }
 
     // Busca servidores por nome (se quiser implementar)
@@ -34,14 +37,14 @@ public class ServidorService {
     // Salva um novo servidor
     public String save(Servidor servidor) {
         this.servidorRepository.save(servidor);
-        return "Servidor cadastrado com sucesso";
+        return servidor.getNome()  + " Servidor cadastrado com sucesso";
     }
 
     // Atualiza um servidor existente
     public String update(Servidor servidor, long id) {
         servidor.setId(id);
         this.servidorRepository.save(servidor);
-        return "Servidor atualizado com sucesso";
+        return servidor.getNome() + "Servidor atualizado com sucesso";
     }
 
     // Deleta um servidor por ID

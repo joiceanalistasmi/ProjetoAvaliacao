@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Questao;
 import app.service.QuestaoService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/questao")
@@ -27,11 +28,19 @@ public class QuestaoController {
 	@Autowired
 	private QuestaoService questaoService;
 
-	public ResponseEntity<List<Questao>> findAll() {
-		List<Questao> lista = this.questaoService.findAll();
-		return new ResponseEntity<>(lista, HttpStatus.OK);
+	   // @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/findAll")
+    public ResponseEntity<List<Questao>> findAll() {
+        try {
+            List<Questao> lista = questaoService.findAll();
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+        	System.out.println(e.getMessage());
+        	e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 
-	}
 
 	@GetMapping("/findById/{id}")
 	public ResponseEntity<Questao> findById(@PathVariable long id) {
@@ -46,9 +55,9 @@ public class QuestaoController {
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestParam Questao q) {
-		String lista = this.questaoService.save(q);
-		return new ResponseEntity<>(lista, HttpStatus.OK);
+	public ResponseEntity<String> save(@RequestBody @Valid Questao q) {
+	    String mensagem = this.questaoService.save(q);
+	    return new ResponseEntity<>(mensagem, HttpStatus.OK);
 	}
 
 	@PutMapping("/update/{id}")

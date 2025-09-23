@@ -1,13 +1,12 @@
 package app.entity;
-
-import java.util.ArrayList;
-import java.util.List;
-
+ 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,15 +24,20 @@ public class Questao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "Titulo é obrigatório")
-	private String titulo;
+	@NotBlank(message = "Enunciado é obrigatório")
+	private String enunciado;
 
-	@NotBlank(message = "Descricao é obrigatório")
-	private String descricao;
+	private String observacao;
 
-	private double valor;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "questionAtiva")
+	private QuestionAtiva questionAtiva;
 
-	@ManyToMany(mappedBy = "questoes")
-	private List<Avaliacao> avaliacoes = new ArrayList<>();
+	public enum QuestionAtiva {
+	    	ATIVO, INATIVO;
+	}
+	
+	//@ManyToMany(mappedBy = "questoes")
+	//private List<Avaliacao> avaliacoes = new ArrayList<>();
 
 }

@@ -12,7 +12,7 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long>{
 
 	public List<Avaliacao> findByAvaliadorContainingIgnoreCase(String nomeAvaliador);
 
-	public List<Avaliacao> findByServidorId(long servidorId);
+	//public List<Avaliacao> findByServidorId(long servidorId);
 
 	public List<Avaliacao> findByPeriodo(Date periodo);
 }

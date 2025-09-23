@@ -47,7 +47,8 @@ public class AvaliacaoService {
 
     // Lista avaliações por servidor_id
     public List<Avaliacao> findByServidorId(long servidorId) {
-        return this.avaliacaoRepository.findByServidorId(servidorId);
+     //   return this.avaliacaoRepository.findByServidorId(servidorId);
+    	return null;
     }
 
     // (Opcional) Buscar por período

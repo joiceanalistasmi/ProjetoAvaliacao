@@ -8,7 +8,7 @@
 		<version>3.5.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>app.servidor</groupId>
+	<groupId>app</groupId>
 	<artifactId>servidor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>servidor</name>
@@ -44,6 +44,7 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -76,14 +77,15 @@
 			<artifactId>spring-graphql-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
+</dependency> -->
 <dependency>
     <groupId>jakarta.validation</groupId>
     <artifactId>jakarta.validation-api</artifactId>
 </dependency>
+<!--
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
     <artifactId>jjwt-api</artifactId>
@@ -100,11 +102,14 @@
     <artifactId>jjwt-jackson</artifactId>
     <version>0.11.5</version>
     <scope>runtime</scope>
-</dependency>
+</dependency> -->
 <dependency>
     <groupId>org.hibernate.validator</groupId>
     <artifactId>hibernate-validator</artifactId>
 </dependency>
+ 
+
+
 
 	</dependencies>
 

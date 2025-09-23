@@ -36,12 +36,15 @@ public class QuestaoService {
 	}
 
 	public String deleteById(long id) {
+		if (!questaoRepository.existsById(id)) {
+			return "Questao com ID" + id + " não encontrada";
+		}
 		this.questaoRepository.deleteById(id);
 		return " Questão deletada";
 	}
 
-	public List<Questao> findByTitulo(java.lang.String titulo) {
-		return this.questaoRepository.findByTituloContainingIgnoreCase(titulo);
+	public List<Questao> findByTitulo(java.lang.String enunciado) {
+		return this.questaoRepository.findByEnunciadoContainingIgnoreCase(enunciado);
 	}
 
 }

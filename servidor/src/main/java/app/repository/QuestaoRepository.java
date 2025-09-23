@@ -8,6 +8,8 @@ import app.entity.Questao;
 
 public interface QuestaoRepository extends JpaRepository<Questao, Long> {
 
-	public List<Questao> findByTituloContainingIgnoreCase(String titulo);
+	public List<Questao> findByEnunciadoContainingIgnoreCase(String enunciado);
+	
+	
 
 }

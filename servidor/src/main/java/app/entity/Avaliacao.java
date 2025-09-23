@@ -11,7 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,7 +28,6 @@ public class Avaliacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	 
 	private Date periodo;
 	 
 	private Date data_avaliacao;
@@ -40,18 +38,22 @@ public class Avaliacao {
 	private String avaliador;
 	 
 	private double nota_final;
-	
+	/*
 	@ManyToOne
-	@JoinTable(name="servidor_id")
-	private Servidor servidor_id;
+	@JoinColumn(name="servidor_id")
+	@JsonIgnoreProperties("avaliacoes")
+	private Servidor servidor;*/
 	   
 	// Relacionamento muitos para muitos com Questao
     @ManyToMany
-    @JoinTable(
+  /*  @JoinTable(
         name = "avaliacao_questao",
         joinColumns = @JoinColumn(name = "avaliacao_id"),
         inverseJoinColumns = @JoinColumn(name = "questao_id")
     )
+    */
+    //observação - cuidar pois nesta parte vou usar um array de questoes e cada uma deve gerar 
+    //uma nota dentro da escala fixa
     private List<Questao> questoes = new ArrayList<>();
 	  
 	
