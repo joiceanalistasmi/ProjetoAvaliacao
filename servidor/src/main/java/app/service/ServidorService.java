@@ -33,8 +33,8 @@ public class ServidorService {
     public List<Servidor> findByNome(String nome) {
         return this.servidorRepository.findByNomeContainingIgnoreCase(nome);
     }
-
-    // Salva um novo servidor
+      
+      // Salva um novo servidor
     public String save(Servidor servidor) {
         this.servidorRepository.save(servidor);
         return servidor.getNome()  + " Servidor cadastrado com sucesso";
@@ -47,7 +47,7 @@ public class ServidorService {
         return servidor.getNome() + "Servidor atualizado com sucesso";
     }
 
-    // Deleta um servidor por ID
+    // deleta um servidor por ID
     public String deleteById(long id) {
         this.servidorRepository.deleteById(id);
         return "Servidor deletado com sucesso";
